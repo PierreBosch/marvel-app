@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import background from '../../assets/images/marvel-background.png';
-import { darken } from 'polished';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   height: 100vh;
@@ -25,40 +25,23 @@ export const Content = styled.div`
           margin-bottom: 24px;
           font-family: 'Bangers';
       }
+  }
 
-      input {
-          background: #F2F2F2;
-          border-radius: 10px;
-          border: 2px solid #232129;
-          padding: 16px 24px;
-          width: 100%;
-          color: #716975;
+  > a {
+    color: #FFF;
+    font-family: 'Bangers';
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    transition:all 200ms ease-in-out;
 
-          & + input {
-              margin-top: 16px;
-          }
-      }
+    svg {
+      margin-right: 16px;
+    }
 
-      button {
-        background: #ED1D24;
-        border-radius: 10px;
-        border: 0;
-        padding: 16px;
-        width: 100%;
-        font-size: 18px;
-        padding: 0 16px;
-        color: #ffffff;
-        text-transform: uppercase;
-        height: 56px;
-        font-family: 'Bangers';
-        letter-spacing: 3px;
-        margin-top: 16px;
-        transition: 200ms all ease-in-out;
-
-        :hover {
-            background: ${darken(0.1, '#ED1D24')}
-        }
-      }
+    &:hover {
+      color: ${shade(0.2, '#ED1D24')}
+    }
   }
 `;
 
