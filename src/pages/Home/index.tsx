@@ -8,6 +8,7 @@ import Select from '../../components/Select';
 import Button from '../../components/Button';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/AuthContext';
 
 const options = [
     { value: 'comic', label: 'Comic' },
@@ -15,6 +16,7 @@ const options = [
   ]
 
 const Home: React.FC = () => {
+    const { signOut } = useAuth();
     const [characters, setCharacters] = useState([]);
     const [comics, setComics] = useState([]);
 
@@ -41,6 +43,7 @@ const Home: React.FC = () => {
 
     return (
         <Container>
+            <button className="sign-out" onClick={signOut} >Sair</button>
             <Form ref={formRef} onSubmit={handleSearch}>
                     <Select 
                         name="type" 

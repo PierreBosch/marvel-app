@@ -3,6 +3,21 @@ import { shade } from 'polished';
 
 export const Container = styled.div`
 
+button.sign-out {
+    width: 100px;
+    padding: 16px 24px;
+    background: ${shade(0.4, '#213544')};
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    margin-bottom: 24px;
+    transition: all 200ms ease-in-out;
+
+    :hover {
+        background: ${shade(0.6, '#213544')}
+    }
+}
+
   h1 {
       font-size: 20px;
       font-family: 'Bangers';
