@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useContext} from 'react';
+import React, { useRef, useCallback} from 'react';
 
 import { Container, Content, Background } from './styles';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
@@ -10,6 +10,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { useAuth } from '../../hooks/AuthContext';
+import { Link } from 'react-router-dom';
 
 interface SignInFormData {
   email: string,
@@ -58,10 +59,10 @@ const SignIn: React.FC = () => {
                 <Button type="submit">Entrar</Button>
               </Form>
 
-              <a href=""> 
+              <Link to="/signup"> 
                 <FiLogIn /> 
                 Criar Conta
-              </a>
+              </Link>
           </Content>
           <Background />
       </Container>
