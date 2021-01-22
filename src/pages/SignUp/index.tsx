@@ -9,11 +9,19 @@ import { Form } from "@unform/web";
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api';
+import { useHistory, Link } from 'react-router-dom';
 
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
 
 const SignUp: React.FC = () => {
+  const history = useHistory();
   const formRef = useRef<FormHandles>(null);
-  const handleSubmit = useCallback( async (data:object) => {
+  const handleSubmit = useCallback( async (data:SignUpFormData) => {
       try {
           formRef.current?.setErrors({});
           const signUpSchema = Yup.object().shape({
@@ -25,6 +33,10 @@ const SignUp: React.FC = () => {
           await signUpSchema.validate(data, {
               abortEarly: false,
           })
+
+          await api.post('/users', {name: data.name, email: data.email, password: data.password});
+
+          history.push('/');
       } catch (err) {
 
         const errors = getValidationErrors(err);
@@ -49,10 +61,10 @@ const SignUp: React.FC = () => {
                 <Button type="submit">CADASTRAR</Button>
               </Form>
 
-              <a href=""> 
+              <Link to="/"> 
                 <FiArrowLeft /> 
                 Voltar para login
-              </a>
+              </Link>
           </Content>
       </Container>
   );
